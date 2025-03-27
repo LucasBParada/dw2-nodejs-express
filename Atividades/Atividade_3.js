@@ -54,9 +54,54 @@ batman.investigar = function () {
 };
 
 console.log(
-  `O homem aranha está enfrentando um inimigo e ele ${homemAranha.sentidoAranha()} próximo.`
+  `O ${homemAranha.nome } que possui ${homemAranha.vida} de vida, ${homemAranha.velocidade} de velocidade e ${homemAranha.forca} de força, que pode soltar teias ${homemAranha.teia}, está enfrentando um inimigo e ele ${homemAranha.sentidoAranha()} próximo.`
 );
+
 console.log(
-  `O super man está enfrentando um inimigo e ele ${superMan.visaoCalor()}.`
+    `O ${superMan.nome} que possui ${superMan.vida} de vida, ${superMan.velocidade} de velocidade e ${superMan.forca} de força, que pode voar ${superMan.voar}, está enfrentando um inimigo e ele ${superMan.visaoCalor()}.`
 );
-console.log(`O batman achou o inimigo porque estava ${batman.investigar()}.`);
+
+console.log(
+    `O ${batman.nome} que possui ${batman.vida} de vida, ${batman.velocidade} de velocidade e ${batman.forca} de força, que pode se esconder ${batman.esconder}, achou o inimigo pois estava ${batman.investigar()}.`
+  );
+
+
+//Atividade 2:
+const data = new Date;
+
+let dataAlterada = () => {
+  data.setDate(data.getDate() + 3)
+  data.setMonth(data.getMonth() + 2)
+  data.setFullYear(data.getFullYear() + 1)
+}
+
+dataAlterada()
+
+const diaAlterado = data.getDate()
+const mesAlterado = data.getMonth() + 1
+const anoAlterado = data.getFullYear()
+
+
+console.log(`${diaAlterado}/${mesAlterado}/${anoAlterado}`)
+
+
+//Atividade 3:
+let salario = 1500
+
+const salarioConvertido = () => {
+  const salarioDolar = salario * 0.176
+  const salarioEuro = salario * 0.16
+
+  return {salarioDolar, salarioEuro}
+
+}
+
+
+const{salarioDolar, salarioEuro} = salarioConvertido()
+
+
+console.log(salarioDolar.toLocaleString("en", { style: "currency", currency: "USD" }));
+console.log(salarioEuro.toLocaleString("en", { style: "currency", currency: "EUR" }));
+
+
+//Atividade 4:
