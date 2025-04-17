@@ -1,0 +1,67 @@
+<%- include ('partials/navbar.ejs')%>
+<%- include ('partials/header.ejs')%>
+
+<body>
+  <style>
+      body {
+    background-color:#F2C94C;
+    color: #4B2E1E; font-weight: bold;
+    text-align: center;
+  }
+  </style>
+  
+<title>Tabela de Produtos</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #A33E3E;
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #A33E3E;
+    }
+    .produto-img {
+      width: 145px;
+      height: 145px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Lista de Produtos</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Foto Palco</th>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Peso</th>
+        <th>Descrição</th>
+        <th>Categoria</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% produtos.forEach(produto => { %>
+        <tr>
+          <td><img class="produto-img" src="/images/<%= produto.imagem %>" alt="<%= produto.nome %>"></td>
+          <td><%= produto.nome %></td>
+          <td><%= produto.preco.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></td>
+          <td><%= produto.peso %></td>
+          <td><%= produto.descricao %></td>
+          <td><%= produto.categoria %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+</body>
+
+<%- include ('partials/footer.ejs')%>

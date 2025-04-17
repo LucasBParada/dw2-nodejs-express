@@ -11,28 +11,22 @@ app.set('view engine', 'ejs')
 // REQ => Trata a requisicão
 // RES => Trata a resposta
 app.get("/", (req, res) => {
-    res.send("Bem-vindo ao meu primeiro site em Node.js!<h1><br><p>Iniciando estudos com Node.js</p>")
+    res.render("index")
 })
 
 //ROTA DE PERFIL
 // :nome => obrigatorio
 // :nome? => opcional
 app.get("/perfil/:nome?", (req, res) => {
-    //Coletando o parâmetro da rota e gravando na variável
-    const nome = req.params.nome
-    if(nome){
-        res.send(`<h2>Olá, ${nome}! Seja bem-vindo ao seu perfil</h2>`)
-    }else{
-        res.send(`<h2>Faça login para acessar seu perfil</h2>`)
-    }
-    // res.send("<h1>Perfil do usuário</h1>")
+    res.render("perfil") 
 })
 // ROTA DE PRODUTOS
-app.get("/produtos", (req, res) => {
-    res.render("produtos")
+app.get("/produtos/:produto?", (req, res) => {
+    //Coletando o parâmetro da rota
+    const produto = req.params.produto
+    res.render("produtos",{produto : produto})
+    //Enviando a variável produto para a página
 })
-
-
 
 //Iniciando servidor da aplicação na porta 8080
 //O método listen do Express inicia um servidor

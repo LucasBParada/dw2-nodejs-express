@@ -1,0 +1,59 @@
+<%- include ('partials/navbar.ejs')%>
+<%- include ('partials/header.ejs')%>
+
+<body>
+  <style>
+      body {
+    background-color:#F2C94C;
+    color: #4B2E1E; font-weight: bold;
+    text-align: center;
+  }
+  </style>
+
+<title>Ordem Pedidos</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #A33E3E;
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #A33E3E;
+    }
+    .produto-img {
+      width: 145px;
+      height: 145px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Ordem Pedidos</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Numero</th>
+        <th>Valor</th>
+        <th>Itens</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% pedidos.forEach(pedido => { %>
+        <tr>
+          <td><%= pedido.numero %></td>
+          <td><%= pedido.valor %></td>
+          <td><%= pedido.itens %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+<%- include ('partials/footer.ejs')%>
