@@ -25,6 +25,8 @@ connection.query(`CREATE DATABASE IF NOT EXISTS sistemaLoja;`).then(() => {
   console.log(error)
 })
 
+//Configurando o Express para aceitar dados vindo de um formulário
+app.use(express.urlencoded({extende : false}))
 
 
 
