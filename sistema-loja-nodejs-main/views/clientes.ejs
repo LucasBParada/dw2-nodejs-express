@@ -1,0 +1,59 @@
+<%- include ('partials/navbar.ejs')%>
+<%- include ('partials/header.ejs')%>
+
+<body>
+  <style>
+      body {
+    background-color:#F2C94C;
+    color: #4B2E1E; font-weight: bold;
+    text-align: center;
+  }
+  </style>
+
+<title>Lista Clientes</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #A33E3E;
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #A33E3E;
+    }
+    .produto-img {
+      width: 145px;
+      height: 145px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Lista de Clientes</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Endereço</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% clientes.forEach(cliente => { %>
+        <tr>
+          <td><%= cliente.nome %></td>
+          <td><%= cliente.cpf %></td>
+          <td><%= cliente.endereco %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+<%- include ('partials/footer.ejs')%>

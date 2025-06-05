@@ -1,0 +1,42 @@
+<%- include ('partials/header.ejs') %>
+    <div class="container">
+        <h1>Cadastrar novo filme:</h1>
+        <form action ="/movies/new" method="post">
+            <input type="text" name="title"
+            placeholder="Insira o titulo do filme">
+            <input type="text" name="genre"
+            placeholder="Insira o gênero do filme">
+            <input type="number" name="duraction" placeholder="Insira a duração do filme">
+            <input type="submit" value="Cadastrar">
+        </form>
+
+        <br><hr><br>
+
+    </div>
+
+    <table>
+        <thead>
+            <th style="width: 150px; text-align: center;">Título</th>
+            <th style="width: 150px; text-align: center;">Gênero</th>
+            <th style="width: 150px; text-align: center;">Duração</th>
+            <th style="width: 150px; text-align: center;">Ações</th>
+        </thead>
+        <tbody>
+            <% movies.forEach(movie => { %>
+            <tr>
+                <td><%= movie.title %></td>
+                <td><%= movie.genre %></td>
+                <td><%= movie.duraction %></td>
+                <td><a onclick="return confirm ('Deletar mesmo?')" href="/movies/delete/<%= movie.id %>">Excluir</a></td>
+            </tr>
+           <% }) %>
+        </tbody>
+
+
+    </table>
+
+
+
+
+
+<%- include ('partials/footer.ejs') %>

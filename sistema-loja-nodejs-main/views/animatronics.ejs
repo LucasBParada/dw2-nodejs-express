@@ -1,0 +1,142 @@
+<%- include ('partials/navbar.ejs')%>
+<%- include ('partials/header.ejs')%>
+
+<body>
+  <style>
+    body {
+      background-color: #F2C94C;
+      color: #4B2E1E;
+      font-weight: bold;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    form {
+      background-color: #A33E3E;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 500px;
+      margin: 20px auto;
+      color: white;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 6px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+    textarea {
+      resize: vertical;
+      height: 80px;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #4B2E1E;
+      color: #F2C94C;
+      font-weight: bold;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1.1em;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #372114;
+    }
+  </style>
+
+  <h2>Cadastro de Produto</h2>
+
+    <form action="/animatronics" method="POST">
+    <label for="nome">Nome do Produto:</label>
+    <input type="text" id="nome" name="nome" placeholder="Nome do produto" required>
+
+    <label for="preco">Preço (em R$):</label>
+    <input type="number" id="preco" name="preco" placeholder="180000" required min="0" step="0.01">
+
+    <label for="peso">Peso (ex: 190kg):</label>
+    <input type="text" id="peso" name="peso" placeholder="190kg" required>
+
+    <label for="descricao">Descrição:</label>
+    <textarea id="descricao" name="descricao" placeholder="Descrição do produto" required></textarea>
+
+    <label for="categoria">Categoria:</label>
+    <select id="categoria" name="categoria" required>
+      <option value="">Selecione a categoria</option>
+      <option value="Animatronics">Animatronics</option>
+      <option value="Animatronics/Fantasia">Animatronics/Fantasia</option>
+      <option value="Outro">Outro</option>
+    </select>
+
+    <button type="submit">Cadastrar Produto</button>
+  </form>
+</body>
+
+
+<title>Tabela de Produtos</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #A33E3E;
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #A33E3E;
+    }
+    .produto-img {
+      width: 145px;
+      height: 145px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Lista de Produtos</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Foto Palco</th>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Peso</th>
+        <th>Descrição</th>
+        <th>Categoria</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% produtos.forEach(produto => { %>
+        <tr>
+          <td><img class="produto-img" src="/images/<%= produto.imagem %>" alt="<%= produto.nome %>"></td>
+          <td><%= produto.nome %></td>
+          <td><%= produto.preco.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></td>
+          <td><%= produto.peso %></td>
+          <td><%= produto.descricao %></td>
+          <td><%= produto.categoria %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+</body>
+
